@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/Button';
+import Link from '../../components/Link';
 import { signUpApi } from '../../lib/axios';
 
 const Registrations = () => {
@@ -61,6 +62,7 @@ const Registrations = () => {
         <input {...register('password_confirmation')} className={inputClass} type='password' id='password_confirmation' name='password_confirmation' placeholder='Re-enter your Password' required minLength={8} maxLength={32} />
         {renderAlert()}
         <Button name={processing ? 'Signing-Up' : 'Sign Up'} type='submit' disabled={processing} />
+        <Link name="Have an account, Sign In here" to='/sign-in' />
       </form>
     );
   }
