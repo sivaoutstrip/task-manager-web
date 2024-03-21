@@ -30,10 +30,10 @@ const ClientRoute = ({ children }) => {
   } else {
     return (
       <>
-        <header className='min-h-16 p-4 flex justify-between items-center'>
+        <header className='h-15 p-4 flex justify-between items-center border-b border-b-violet-700'>
           <div className='flex items-center'>
-            <img src={tmLogo} alt="Task manager app logo" className='max-h-14 border rounded-full' />
-            <p className='hidden md:inline-block text-2xl font-semibold pl-3'>Task Manager</p>
+            <img src={tmLogo} alt="Task manager app logo" className='h-14 border rounded-full' />
+            <p className='hidden md:inline-block text-2xl font-semibold pl-3 text-violet-700'>Task Manager</p>
           </div>
           <div>
             <Button name='Logout' onClick={handleLogout} />
