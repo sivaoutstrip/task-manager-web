@@ -52,7 +52,7 @@ const Task = ({ task }) => {
       {renderTaskStatus(task.status)}
       <p className='pt-4 text-sm text-slate-400'>Description</p>
       <div className='h-32 overflow-auto'>{task.description}</div>
-      <div className='flex justify-end items-center'>
+      <div className='mt-2 flex justify-end items-center'>
         <button className='mr-3 px-3 py-1 text-sm border rounded-md border-gray-400 bg-gray-400 text-white cursor-pointer' onClick={routeToEditTask}>Edit</button>
         <button className='px-3 py-1 text-sm border rounded-md border-red-500 text-red-500 cursor-pointer' onClick={deleteTask}>Delete</button>
       </div>

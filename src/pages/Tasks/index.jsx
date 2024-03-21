@@ -10,14 +10,13 @@ import TaskHeader from './TaskHeader';
 import Task from './Task';
 import New from './New';
 
-import { setTasks } from '../../reducer';
+import { openModal, setTasks } from '../../reducer';
 
 const Tasks = () => {
-  const [processing, setProcessing] = React.useState(true);
-
+  const dispatch = useDispatch();
   const tasks = useSelector(({ modal }) => modal.tasks);
 
-  const dispatch = useDispatch();
+  const [processing, setProcessing] = React.useState(true);
 
   React.useEffect(() => {
     listTaskApi().then(result => {
@@ -28,6 +27,8 @@ const Tasks = () => {
       Swal.fire('Unable to get tasks, please try after sometime');
     })
   }, []);
+
+  const openNewTask = () => dispatch(openModal());
 
   const renderTask = (task) => <Task key={task.id} task={task} />
 
@@ -41,7 +42,7 @@ const Tasks = () => {
     <DataNotFound>
       <div className='text-center'>
         <p className='text-md text-violet-700'>No task created...</p>
-        <Button name='Create a new task' type='outlined' size='small' />
+        <Button name='Create a new task' type='outlined' size='small' onClick={openNewTask} />
       </div>
     </DataNotFound>
   );
