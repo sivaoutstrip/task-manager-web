@@ -33,7 +33,8 @@ const EditTaskForm = () => {
         setValue('status', getStatusValue(result.data.status));
         setProcessing(false);
       }).catch(error => {
-        console.log('error', error);
+        console.error('Error on getting task data', error.response);
+        notification({ title: 'Unable to get task, please try after sometime' });
         setProcessing(false);
       })
     }

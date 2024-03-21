@@ -2,15 +2,18 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 
+import New from './New';
+import Task from './Task';
+import TaskHeader from './TaskHeader';
+
 import Spinner from '../../components/Spinner';
 import DataNotFound from '../../components/DataNotFound';
 import Button from '../../components/Button';
-import { listTaskApi } from '../../lib/axios';
-import TaskHeader from './TaskHeader';
-import Task from './Task';
-import New from './New';
 
+import { listTaskApi } from '../../lib/axios';
+import { notification } from '../../components/alert'
 import { openModal, setTasks } from '../../reducer';
+import SearchForm from './Search';
 
 const Tasks = () => {
   const dispatch = useDispatch();
@@ -24,7 +27,8 @@ const Tasks = () => {
       setProcessing(false);
     }).catch(error => {
       console.error('Error on getting task data', error.response);
-      Swal.fire('Unable to get tasks, please try after sometime');
+      notification({ title: 'Unable to get tasks, please try after sometime' });
+      setProcessing(false);
     })
   }, []);
 
@@ -64,6 +68,7 @@ const Tasks = () => {
   return (
     <div className='p-4 mb-40'>
       <TaskHeader />
+      <SearchForm />
       {renderTaskLoader()}
       <New />
     </div>

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import { listTaskApi } from '../../lib/axios'
 import { setTasks } from '../../reducer'
+import { notification } from '../../components/alert'
 
 const people = [
   { name: 'All Statuses', value: '' },
@@ -22,7 +23,8 @@ const Filter = () => {
     listTaskApi({ params: { q: { 'status_eq': d.value } } }).then(result => {
       dispatch(setTasks(result.data));
     }).catch(error => {
-      console.log('error', error);
+      console.error('Error on getting task data', error.response);
+       notification({ title: 'Unable to get tasks, please try after sometime' })
     })
   };
 
