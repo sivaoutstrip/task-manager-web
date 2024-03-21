@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
 import { signUpApi } from '../../lib/axios';
+import Label from '../../components/Form/Label';
+import Input from '../../components/Form/Input';
 
 const Registrations = () => {
-  const labelClass = 'pb-1'
-  const inputClass = 'block border border-slate-500 rounded-md min-w-full p-2 mt-1 mb-4'
   const { register, handleSubmit } = useForm();
   const [processing, setProcessing] = React.useState(false);
   const [errors, setErrors] = React.useState([]);
@@ -54,12 +54,9 @@ const Registrations = () => {
   const renderForm = () => {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className={labelClass} htmlFor='email'>Enter your Email *</label>
-        <input {...register('email')} type='email' className={inputClass} id='email' name='email' placeholder='Enter your Email' required />
-        <label className={labelClass} htmlFor='password'>Enter your Password *</label>
-        <input {...register('password')} type='password' className={inputClass} id='password' name='password' placeholder='Enter your Password' required minLength={8} maxLength={32} />
-        <label className={labelClass} htmlFor='password_confirmation'>Enter your Password Confirmation *</label>
-        <input {...register('password_confirmation')} className={inputClass} type='password' id='password_confirmation' name='password_confirmation' placeholder='Re-enter your Password' required minLength={8} maxLength={32} />
+        <Input type='email' name='email' placeholder="Enter your email address *" required element={register('email')} />
+        <Input type='password' name='password' placeholder="Enter your Password *" required element={register('password')} />
+        <Input type='password' name='password_confirmation' placeholder="Re-enter your Password" required element={register('password_confirmation')} />
         {renderAlert()}
         <Button name={processing ? 'Signing-Up' : 'Sign Up'} type='submit' disabled={processing} />
         <Link name="Have an account, Sign In here" to='/sign-in' />

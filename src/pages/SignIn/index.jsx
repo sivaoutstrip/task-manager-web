@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
 import { signInApi } from '../../lib/axios';
+import Input from '../../components/Form/Input';
 
 const SignIn = () => {
-  const labelClass = 'pb-1'
-  const inputClass = 'block border border-slate-500 rounded-md min-w-full p-2 mt-1 mb-4'
   const { register, handleSubmit } = useForm();
   const [processing, setProcessing] = React.useState(false);
   const [error, setError] = React.useState(undefined);
@@ -43,10 +42,8 @@ const SignIn = () => {
   const renderForm = () => {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className={labelClass} htmlFor='email'>Enter your Email *</label>
-        <input {...register('email')} type='email' className={inputClass} id='email' name='email' placeholder='Enter your Email' required />
-        <label className={labelClass} htmlFor='password'>Enter your Password *</label>
-        <input {...register('password')} type='password' className={inputClass} id='password' name='password' placeholder='Enter your Password' required minLength={8} maxLength={32} />
+        <Input type='email' name='email' placeholder="Enter your email address *" required element={register('email')} />
+        <Input type='password' name='password' placeholder="Enter your Password *" required element={register('password')} />
         <Button name={processing ? 'Signing-in' : 'Sign In'} type='submit' disabled={processing} />
         <Link name="Don't have an account, Sign Up here" to='/' />
       </form>
