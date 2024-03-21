@@ -1,9 +1,30 @@
 import React from 'react';
 
-const Button = ({ name, type, onClick, disabled }) => {
+const Button = ({ name, type, onClick, disabled, size }) => {
+  const buttonClassList = ['block',
+    'border',
+    'rounded-md',
+    'px-4',
+    'py-2',
+    'my-2',
+    'cursor-pointer',
+    'disabled:cursor-default'];
+
+  if (size !== 'small') {
+    buttonClassList.push('min-w-full');
+  }
+
+  if (type === 'outlined') {
+    const outlined = 'border-violet-700 bg-white text-violet-700 disabled:text-violet-500 disabled:border-violet-500 hover:bg-violet-700 hover:text-white'
+    buttonClassList.push(outlined);
+  } else {
+    const contained = 'border-violet-700 bg-violet-700 text-white disabled:bg-violet-500 hover:bg-white hover:text-violet-700'
+    buttonClassList.push(contained);
+  }
+
   return (
     <button
-      className='block min-w-full border rounded-md border-violet-700 bg-violet-700 text-white px-4 py-2 my-2 cursor-pointer disabled:bg-violet-500 disabled:cursor-default hover:bg-white hover:text-violet-700'
+      className={buttonClassList.join(' ')}
       onClick={onClick}
       type={type || 'button'}
       disabled={disabled}>
