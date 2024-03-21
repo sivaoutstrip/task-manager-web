@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-import Swal from 'sweetalert2';
 
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Form/Input';

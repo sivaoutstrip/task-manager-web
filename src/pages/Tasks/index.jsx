@@ -16,7 +16,6 @@ const Tasks = () => {
   const [processing, setProcessing] = React.useState(true);
 
   const tasks = useSelector(({ modal }) => modal.tasks);
-  console.log('tasks', tasks);
 
   const dispatch = useDispatch();
 
@@ -62,7 +61,7 @@ const Tasks = () => {
   }
 
   return (
-    <div className='p-4'>
+    <div className='p-4 mb-40'>
       <TaskHeader />
       {renderTaskLoader()}
       <New />

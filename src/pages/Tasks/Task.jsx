@@ -1,17 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { removeTask } from '../../reducer';
 import { deleteTaskApi } from '../../lib/axios';
 import { notification, question } from '../../components/alert';
 
+
 const Task = ({ task }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteTask = () => {
     question({
       title: `Are you sure to delete ${task.title}?`,
-      text: 'This process is irreversible' 
+      text: 'This process is irreversible'
     }).then(result => {
       if (result.isConfirmed) {
         deleteTaskApi(task.id).then(result => {
@@ -20,6 +23,10 @@ const Task = ({ task }) => {
         })
       }
     })
+  }
+
+  const routeToEditTask = () => {
+    navigate(`/tasks/${task.id}/edit`);
   }
 
   const getColor = (status) => {
@@ -32,7 +39,7 @@ const Task = ({ task }) => {
     return `text-violet-700 bg-violet-100 border rounded-md border-violet-100`;
   }
 
-  
+
   const renderTaskStatus = (status) => {
     const color = getColor(status);
     const statusClass = `inline-block mt-4 px-2 py-1 text-sm s-1 ${color}`;
@@ -46,7 +53,7 @@ const Task = ({ task }) => {
       <p className='pt-4 text-sm text-slate-400'>Description</p>
       <div className='h-32 overflow-auto'>{task.description}</div>
       <div className='flex justify-end items-center'>
-        <button className='mr-3 px-3 py-1 text-sm border rounded-md border-gray-400 bg-gray-400 text-white cursor-pointer'>Edit</button>
+        <button className='mr-3 px-3 py-1 text-sm border rounded-md border-gray-400 bg-gray-400 text-white cursor-pointer' onClick={routeToEditTask}>Edit</button>
         <button className='px-3 py-1 text-sm border rounded-md border-red-500 text-red-500 cursor-pointer' onClick={deleteTask}>Delete</button>
       </div>
     </div>

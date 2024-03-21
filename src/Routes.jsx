@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn';
 import Tasks from './pages/Tasks';
 import ClientRoute from './pages/Routes/ClientRoute';
 import OpenRoute from './pages/Routes/OpenRoute';
+import EditTaskForm from './pages/Tasks/Edit';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "tasks",
         element: <ClientRoute><Tasks /></ClientRoute>,
+      },
+      {
+        path: "tasks/:taskId/edit",
+        element: <ClientRoute><EditTaskForm /></ClientRoute>,
       }
     ]
   },

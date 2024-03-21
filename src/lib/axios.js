@@ -12,4 +12,6 @@ if (token) {
 
 export const listTaskApi = (params) => axios.get(`${apiUrl}/tasks`, params);
 export const createTaskApi  = (data) => axios.post(`${apiUrl}/tasks`, data);
-export const deleteTaskApi = (id) => axios.delete(`${apiUrl}/tasks/${id}`)
+export const deleteTaskApi = (id) => axios.delete(`${apiUrl}/tasks/${id}`);
+export const updateTaskApi = ({ id, data }) => axios.put(`${apiUrl}/tasks/${id}`, data);
+export const showTaskApi = (id) => axios.get(`${apiUrl}/tasks/${id}`);
