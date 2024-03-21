@@ -44,7 +44,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input type='email' name='email' placeholder="Enter your email address *" required element={register('email')} />
         <Input type='password' name='password' placeholder="Enter your Password *" required element={register('password')} />
-        <Button name={processing ? 'Signing-in' : 'Sign In'} type='submit' disabled={processing} />
+        <Button name={processing ? 'Signing-in' : 'Sign In'} buttonType='submit' disabled={processing} />
         <Link name="Don't have an account, Sign Up here" to='/' />
       </form>
     );

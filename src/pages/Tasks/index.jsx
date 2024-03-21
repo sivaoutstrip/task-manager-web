@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
 import Spinner from '../../components/Spinner';
 import DataNotFound from '../../components/DataNotFound';
@@ -8,16 +8,21 @@ import Button from '../../components/Button';
 import { listTaskApi } from '../../lib/axios';
 import TaskHeader from './TaskHeader';
 import Task from './Task';
+import New from './New';
+
+import { setTasks } from '../../reducer';
 
 const Tasks = () => {
   const [processing, setProcessing] = React.useState(true);
-  const [tasks, setTasks] = React.useState([]);
 
-  const modalStatus = useSelector(({ modal }) => modal.status);
+  const tasks = useSelector(({ modal }) => modal.tasks);
+  console.log('tasks', tasks);
+
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     listTaskApi().then(result => {
-      setTasks(result.data);
+      dispatch(setTasks(result.data));
       setProcessing(false);
     }).catch(error => {
       console.error('Error on getting task data', error.response);
@@ -58,9 +63,9 @@ const Tasks = () => {
 
   return (
     <div className='p-4'>
-      {modalStatus ? 'Open Modal' : 'Close Modal'}
       <TaskHeader />
       {renderTaskLoader()}
+      <New />
     </div>
   );
 }

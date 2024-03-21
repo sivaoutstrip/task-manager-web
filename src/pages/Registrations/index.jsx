@@ -58,7 +58,7 @@ const Registrations = () => {
         <Input type='password' name='password' placeholder="Enter your Password *" required element={register('password')} />
         <Input type='password' name='password_confirmation' placeholder="Re-enter your Password" required element={register('password_confirmation')} />
         {renderAlert()}
-        <Button name={processing ? 'Signing-Up' : 'Sign Up'} type='submit' disabled={processing} />
+        <Button name={processing ? 'Signing-Up' : 'Sign Up'} buttonType='submit' disabled={processing} />
         <Link name="Have an account, Sign In here" to='/sign-in' />
       </form>
     );
