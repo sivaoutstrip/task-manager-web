@@ -14,9 +14,13 @@ export const counterSlice = createSlice({
       tasks.unshift(action.payload);
       state.tasks = tasks
     },
-    setTasks: (state, action) => { state.tasks = action.payload }
+    setTasks: (state, action) => { state.tasks = action.payload },
+    removeTask: (state, action) => {
+      const tasks = state.tasks;
+      state.tasks = tasks.filter((task) => task.id != action.payload);
+    }
   },
 })
 
-export const { openModal, closeModal, addTask, setTasks } = counterSlice.actions
+export const { openModal, closeModal, addTask, setTasks, removeTask } = counterSlice.actions
 export default counterSlice.reducer

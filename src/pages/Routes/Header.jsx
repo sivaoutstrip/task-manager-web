@@ -4,18 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import tmLogo from '../../images/tm-logo-100x100.jpeg';
-
+import { question } from '../../components/alert';
 
 const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    Swal.fire({
-      title: "Are you sure to Logout?",
-      showCancelButton: true,
-      icon: "question",
-      focusCancel: true,
-    }).then((result) => {
+    question({ title: `Are you sure to Logout?` }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
