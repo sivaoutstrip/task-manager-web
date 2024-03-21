@@ -6,6 +6,7 @@ import Button from '../../components/Button';
 import Link from '../../components/Link';
 import { signInApi } from '../../lib/axios';
 import Input from '../../components/Form/Input';
+import Logo from '../../components/Logo';
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();
@@ -51,9 +52,10 @@ const SignIn = () => {
   }
 
   return (
-    <div className='md:grid grid-cols-3 gap-2 pt-40'>
+    <div className='md:grid grid-cols-3 gap-2 pt-10'>
       <div />
       <div className='px-6'>
+        <Logo />
         <div className='text-3xl font-bold text-center mb-4'>Sign In</div>
         {renderError()}
         {renderForm()}

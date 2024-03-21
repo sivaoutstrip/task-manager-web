@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
 import { signUpApi } from '../../lib/axios';
-import Label from '../../components/Form/Label';
 import Input from '../../components/Form/Input';
+import Logo from '../../components/Logo';
 
 const Registrations = () => {
   const { register, handleSubmit } = useForm();
@@ -65,9 +65,10 @@ const Registrations = () => {
   }
 
   return (
-    <div className='md:grid grid-cols-3 gap-2 pt-40'>
+    <div className='md:grid grid-cols-3 gap-2 pt-10'>
       <div />
       <div className='px-6'>
+        <Logo />
         <div className='text-3xl font-bold text-center mb-4'>Sign Up</div>
         {renderErrors()}
         {renderForm()}
