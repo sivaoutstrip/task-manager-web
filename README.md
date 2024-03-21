@@ -29,7 +29,7 @@ https://github.com/sivaoutstrip/task-manager-web
 
 ### Live application location
 
-http://taskmanager24.s3-website.ap-south-1.amazonaws.com/tasks
+http://taskmanager24.s3-website.ap-south-1.amazonaws.com
 
 # Product features and conditions
 
