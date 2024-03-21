@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Button from '../../components/Button';
 import Link from '../../components/Link';
@@ -18,7 +19,10 @@ const Registrations = () => {
     setProcessing(true);
     signUpApi(data).then(result => {
       const token = result.data.token;
-      localStorage.setItem('token', token);
+      if (token) {
+        localStorage.setItem('token', token);
+        axios.defaults.headers.common['Authorization'] = token;
+      }
       localStorage.setItem('user', JSON.stringify(result.data.user));
       navigate('/tasks');
       setErrors([]);

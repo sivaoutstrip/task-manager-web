@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-console.log('apiUrl', apiUrl);
 
 export const signUpApi = (data) => axios.post(`${apiUrl}/sign-up`, data);
 export const signInApi = (data) => axios.post(`${apiUrl}/sign-in`, data);
